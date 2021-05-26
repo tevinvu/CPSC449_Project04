@@ -9316,3 +9316,84 @@ requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected(
 [2021-05-24 20:17:58,641] DEBUG in root: All is good
 [2021-05-24 20:17:58,642] DEBUG in root: posts servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
 [2021-05-25 19:10:14,804] DEBUG in root: Requests logging enabled
+[2021-05-25 19:53:10,912] DEBUG in root: Requests logging enabled
+[2021-05-25 19:53:13,469] DEBUG in root: Requests logging enabled
+[2021-05-25 19:53:53,997] DEBUG in root: Requests logging enabled
+[2021-05-25 19:54:31,766] DEBUG in root: payload: {'username': 'ProfAvery', 'password': 'password'}
+[2021-05-25 19:54:31,766] DEBUG in root: url in func: /users/
+[2021-05-25 19:54:31,766] DEBUG in root: tempRoute: routes.'/users/'
+[2021-05-25 19:54:31,766] DEBUG in root: upstream server in get: ['http://localhost:5100']
+[2021-05-25 19:54:31,784] DEBUG in root: All is good
+[2021-05-25 19:54:31,803] DEBUG in root: <Response [200]>
+[2021-05-25 19:54:31,803] DEBUG in root: 'resources': [{'email': 'kavery@fullerton.edu', 'id': 1, 'password': 'password', 'username': 'ProfAvery'}]
+[2021-05-25 20:13:34,470] DEBUG in root: payload: {'username': 'Ammania', 'password': 'easy'}
+[2021-05-25 20:13:34,471] DEBUG in root: url in func: /users/
+[2021-05-25 20:13:34,471] DEBUG in root: tempRoute: routes.'/users/'
+[2021-05-25 20:13:34,471] DEBUG in root: upstream server in get: ['http://localhost:5100']
+[2021-05-25 20:13:34,530] DEBUG in root: All is good
+[2021-05-25 20:13:34,567] DEBUG in root: <Response [200]>
+[2021-05-25 20:13:34,568] DEBUG in root: 'resources': [{'email': 'Amania@gmail.com', 'id': 4, 'password': 'easy', 'username': 'Ammania'}]
+[2021-05-25 20:13:34,569] DEBUG in root: payload: {'_facet': 'username', 'username': 'Ammania', '_shape': 'array'}
+[2021-05-25 20:13:34,570] DEBUG in root: url in func: /users/following.json
+[2021-05-25 20:13:34,570] DEBUG in root: tempRoute: routes.'/users/following.json'
+[2021-05-25 20:13:34,570] DEBUG in root: upstream server in get: ['http://localhost:5300']
+[2021-05-25 20:13:34,766] DEBUG in root: All is good
+[2021-05-25 20:13:34,785] DEBUG in root: [{"username": "Ammania", "friendname": "ProfAvery"}, {"username": "Ammania", "friendname": "Beth_CSUF"}, {"username": "Ammania", "friendname": "Ammania"}, {"username": "Ammania", "friendname": "JohnLegend"}]
+[2021-05-25 20:13:34,785] DEBUG in root: tempUserFollowing: [{'username': 'Ammania', 'friendname': 'ProfAvery'}, {'username': 'Ammania', 'friendname': 'Beth_CSUF'}, {'username': 'Ammania', 'friendname': 'Ammania'}, {'username': 'Ammania', 'friendname': 'JohnLegend'}]
+[2021-05-25 20:13:34,785] DEBUG in root: tempList: ['ProfAvery', 'Beth_CSUF', 'Ammania', 'JohnLegend']
+[2021-05-25 20:13:34,785] DEBUG in root: done
+[2021-05-25 20:13:34,785] DEBUG in root: url in func: /posts/
+[2021-05-25 20:13:34,785] DEBUG in root: tempRoute: routes.'/posts/'
+[2021-05-25 20:13:34,785] DEBUG in root: upstream server in get: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:13:34,918] DEBUG in root: All is good
+[2021-05-25 20:13:35,012] DEBUG in root: All is good
+[2021-05-25 20:13:35,063] DEBUG in root: All is good
+[2021-05-25 20:13:35,064] DEBUG in root: posts servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:13:35,064] DEBUG in root: temp_times_server: http://localhost:5200
+[2021-05-25 20:13:35,106] DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
+[2021-05-25 20:13:35,106] DEBUG in root: user_reqs: 200
+[2021-05-25 20:13:35,106] DEBUG in root: temp_times_server: http://localhost:5201
+[2021-05-25 20:13:35,138] DEBUG in root: New temp_servers: ['http://localhost:5202', 'http://localhost:5200', 'http://localhost:5201']
+[2021-05-25 20:13:35,138] DEBUG in root: user_reqs: 200
+[2021-05-25 20:13:35,138] DEBUG in root: temp_times_server: http://localhost:5202
+[2021-05-25 20:13:35,163] DEBUG in root: New temp_servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:13:35,164] DEBUG in root: user_reqs: 200
+[2021-05-25 20:13:35,165] DEBUG in root: temp_times_server: http://localhost:5200
+[2021-05-25 20:13:35,187] DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
+[2021-05-25 20:13:35,187] DEBUG in root: user_reqs: 200
+[2021-05-25 20:16:17,184] DEBUG in root: Requests logging enabled
+[2021-05-25 20:16:25,271] DEBUG in root: payload: {'username': 'Ammania', 'password': 'easy'}
+[2021-05-25 20:16:25,271] DEBUG in root: url in func: /users/
+[2021-05-25 20:16:25,274] DEBUG in root: tempRoute: routes.'/users/'
+[2021-05-25 20:16:25,276] DEBUG in root: upstream server in get: ['http://localhost:5100']
+[2021-05-25 20:16:25,299] DEBUG in root: All is good
+[2021-05-25 20:16:25,319] DEBUG in root: <Response [200]>
+[2021-05-25 20:16:25,320] DEBUG in root: 'resources': [{'email': 'Amania@gmail.com', 'id': 4, 'password': 'easy', 'username': 'Ammania'}]
+[2021-05-25 20:16:25,320] DEBUG in root: payload: {'_facet': 'username', 'username': 'Ammania', '_shape': 'array'}
+[2021-05-25 20:16:25,320] DEBUG in root: url in func: /users/following.json
+[2021-05-25 20:16:25,320] DEBUG in root: tempRoute: routes.'/users/following.json'
+[2021-05-25 20:16:25,320] DEBUG in root: upstream server in get: ['http://localhost:5300']
+[2021-05-25 20:16:25,671] DEBUG in root: All is good
+[2021-05-25 20:16:25,703] DEBUG in root: [{"username": "Ammania", "friendname": "ProfAvery"}, {"username": "Ammania", "friendname": "Beth_CSUF"}, {"username": "Ammania", "friendname": "Ammania"}, {"username": "Ammania", "friendname": "JohnLegend"}]
+[2021-05-25 20:16:25,703] DEBUG in root: tempUserFollowing: [{'username': 'Ammania', 'friendname': 'ProfAvery'}, {'username': 'Ammania', 'friendname': 'Beth_CSUF'}, {'username': 'Ammania', 'friendname': 'Ammania'}, {'username': 'Ammania', 'friendname': 'JohnLegend'}]
+[2021-05-25 20:16:25,703] DEBUG in root: tempList: ['ProfAvery', 'Beth_CSUF', 'Ammania', 'JohnLegend']
+[2021-05-25 20:16:25,705] DEBUG in root: done
+[2021-05-25 20:16:25,705] DEBUG in root: url in func: /posts/
+[2021-05-25 20:16:25,707] DEBUG in root: tempRoute: routes.'/posts/'
+[2021-05-25 20:16:25,707] DEBUG in root: upstream server in get: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:16:25,719] DEBUG in root: All is good
+[2021-05-25 20:16:25,740] DEBUG in root: All is good
+[2021-05-25 20:16:25,749] DEBUG in root: All is good
+[2021-05-25 20:16:25,749] DEBUG in root: posts servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:16:25,749] DEBUG in root: temp_times_server: http://localhost:5200
+[2021-05-25 20:16:25,771] DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
+[2021-05-25 20:16:25,771] DEBUG in root: user_reqs: 200
+[2021-05-25 20:16:25,772] DEBUG in root: temp_times_server: http://localhost:5201
+[2021-05-25 20:16:25,805] DEBUG in root: New temp_servers: ['http://localhost:5202', 'http://localhost:5200', 'http://localhost:5201']
+[2021-05-25 20:16:25,806] DEBUG in root: user_reqs: 200
+[2021-05-25 20:16:25,806] DEBUG in root: temp_times_server: http://localhost:5202
+[2021-05-25 20:16:25,822] DEBUG in root: New temp_servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
+[2021-05-25 20:16:25,822] DEBUG in root: user_reqs: 200
+[2021-05-25 20:16:25,823] DEBUG in root: temp_times_server: http://localhost:5200
+[2021-05-25 20:16:25,838] DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
+[2021-05-25 20:16:25,838] DEBUG in root: user_reqs: 200

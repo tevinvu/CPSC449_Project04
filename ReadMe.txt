@@ -1,8 +1,6 @@
 Group members: Cindy Quach, Dalisa Nguyen, Tevin Vu
-1. In the terminal, run this command to start microservices
-$ foreman start 
-or 
-$ foreman start -m gateway=1,users=1,timelines=3,user-queries=1,timeline-queries=1
+1. In the terminal, run this command to start microservices: 
+foreman start or 
 
 1. File gateway.ini information:
 - [routes]
@@ -14,8 +12,8 @@ $ foreman start -m gateway=1,users=1,timelines=3,user-queries=1,timeline-queries
 
 
 
-2. Sample API calls
-*** createUser(username, email, password) *** 
+
+
 http -a ProfGofman:secur POST localhost:5000/users/ username=ProfGofman email=Gofman@gmail.com password=secur
 HTTP/1.0 201 Created
 Content-Length: 79
@@ -31,8 +29,7 @@ Server: Werkzeug/1.0.1 Python/3.6.0
     "username": "ProfGofman"
 }
 
-*** authenticateUser(username, password) ***
-$ http --verbose -a ProfGofman:secur GET 'localhost:5000/users/?username=ProfGofman&password=secur'
+ http --verbose -a ProfGofman:secur GET 'localhost:5000/users/?username=ProfGofman&password=secur'
 GET /users/?username=ProfGofman&password=secur HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
@@ -61,29 +58,7 @@ Server: Werkzeug/1.0.1 Python/3.6.0
     ]
 }
 
-#authenticateUser() doesn't require HTTP Basic authentication
-*** authenticateUser(username, password) ***
-http --verbose http://localhost:5000/users/ProfAvery/password/
-GET /users/ProfAvery/password/ HTTP/1.1
-Accept: */*
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Host: localhost:5000
-User-Agent: HTTPie/2.4.0
 
-
-
-HTTP/1.0 200 OK
-Content-Length: 26
-Content-Type: text/html; charset=UTF-8
-Date: Wed, 26 May 2021 02:54:31 GMT
-Server: WSGIServer/0.2 CPython/3.6.0
-
-ProfAvery is authenticated
-
-
-
-*** addFollower(username, usernameToFollow) ***
 http -a ProfGofman:secur POST localhost:5000/followers/ follower_id=9 following_id=2
 HTTP/1.0 201 Created
 Content-Length: 43
@@ -98,7 +73,7 @@ Server: Werkzeug/1.0.1 Python/3.6.0
     "id": 12
 }
 
-*** getUserTimeline(username) ***
+
 http -a ProfAvery:password GET 'localhost:5000/posts/?username=ProfAvery&sort=-timestamp'
 HTTP/1.0 200 OK
 Content-Length: 456
@@ -238,7 +213,7 @@ Server: uvicorn
     }
 ]
 
-*** postTweet(username, text) ***
+
 $ http -a ProfGofman:secur POST localhost:5000/posts/ username=ProfGofman text='I will teach Web Security next semester.'
 
 HTTP/1.0 201 Created
@@ -257,8 +232,7 @@ Server: Werkzeug/1.0.1 Python/3.6.0
 
 
 *** New Rest Endpoint Test ***
-$ http -a Ammania:easy GET localhost:5000/home/Ammania/
-
+http -a Ammania:easy GET localhost:5000/home/Ammania/
 HTTP/1.0 200 OK
 Content-Length: 1024
 Content-Type: application/json
@@ -312,52 +286,3 @@ Server: WSGIServer/0.2 CPython/3.6.0
     ]
 }
 
-3. Load Balancing
-
-Command Terminal:
-$ http -a Ammania:easy GET localhost:5000/home/Ammania/
-
-HTTP/1.0 200 OK
-Content-Length: 1024
-Content-Type: application/json
-Date: Tue, 25 May 2021 03:16:37 GMT
-Server: WSGIServer/0.2 CPython/3.6.0
-
-Foreman Terminal:
-20:16:25 timelines.1        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET / HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: All is good
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: Server header: Date send: b'GET / HTTP/1.1\r\nHost: localhost:5201\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.2        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET / HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: All is good
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: Server header: Date send: b'GET / HTTP/1.1\r\nHost: localhost:5202\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.3        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET / HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: All is good
-20:16:25 gateway.1          | DEBUG in root: posts servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
-20:16:25 gateway.1          | DEBUG in root: temp_times_server: http://localhost:5200
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: Server header: Date send: b'GET /posts/?username=ProfAvery&sort=-timestamp HTTP/1.1\r\nHost: localhost:5200\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.1        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET /posts/?username=ProfAvery&sort=-timestamp HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
-20:16:25 gateway.1          | DEBUG in root: user_reqs: 200
-20:16:25 gateway.1          | DEBUG in root: temp_times_server: http://localhost:5201
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: ETag header: Server header: Date send: b'GET /posts/?username=Beth_CSUF&sort=-timestamp HTTP/1.1\r\nHost: localhost:5201\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.2        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET /posts/?username=Beth_CSUF&sort=-timestamp HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: New temp_servers: ['http://localhost:5202', 'http://localhost:5200', 'http://localhost:5201']
-20:16:25 gateway.1          | DEBUG in root: user_reqs: 200
-20:16:25 gateway.1          | DEBUG in root: temp_times_server: http://localhost:5202
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: ETag header: Server header: Date send: b'GET /posts/?username=Ammania&sort=-timestamp HTTP/1.1\r\nHost: localhost:5202\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.3        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET /posts/?username=Ammania&sort=-timestamp HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: New temp_servers: ['http://localhost:5200', 'http://localhost:5201', 'http://localhost:5202']
-20:16:25 gateway.1          | DEBUG in root: user_reqs: 200
-20:16:25 gateway.1          | DEBUG in root: temp_times_server: http://localhost:5200
-20:16:25 gateway.1          | header: Content-Type header: Content-Length header: ETag header: Server header: Date send: b'GET /posts/?username=JohnLegend&sort=-timestamp HTTP/1.1\r\nHost: localhost:5200\r\nUser-Agent: python-requests/2.24.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n'
-20:16:25 timelines.1        | 127.0.0.1 - - [25/May/2021 20:16:25] "GET /posts/?username=JohnLegend&sort=-timestamp HTTP/1.1" 200 -
-20:16:25 gateway.1          | reply: 'HTTP/1.0 200 OK\r\n'
-20:16:25 gateway.1          | DEBUG in root: New temp_servers: ['http://localhost:5201', 'http://localhost:5202', 'http://localhost:5200']
-20:16:25 gateway.1          | DEBUG in root: user_reqs: 200
-20:16:25 gateway.1          | 127.0.0.1 - - [25/May/2021 20:16:25] "GET /home/Ammania/ HTTP/1.1" 200 1024
